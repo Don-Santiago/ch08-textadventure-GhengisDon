@@ -13,6 +13,9 @@
  * 
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
+ * 
+ * @amends Don Santiago || G00301287
+ * @version 2023.03.27
  */
 
 public class Game 
@@ -36,70 +39,73 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office, courtyard, fields, stadium, bathroom1, bathroom2, storageroom1, storageroom2, parkinglot, highway, forest;
+        Room MessHall, Dorms, DeckStarboard, DeckPort, DeckAstern, DeckBow, Stairs, BoilerRoom, Tube, Armory, Shop, Infirmary, Kitchen, Hallway, CaptainsQuarters;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        courtyard= new Room("at the courtyard of the University");
-        fields= new Room("at the sport practice fields");
-        stadium= new Room("at the ultimate place to see sports");
-        bathroom1= new Room("smelling both 1 and 2 at the same time...gross");
-        bathroom2= new Room("thankful there is toilet paper in this bathroom at least");
-        storageroom1= new Room("lost in a room where there just happens to be too much stuff");
-        storageroom2= new Room("in the staff storage room");
-        parkinglot = new Room("where paradise was at least until they put up this parking lot");
-        forest = new Room("staring into the endless void of trees, better not go in");
-        highway = new Room("definitely not goin gto walk into all of that traffic. People got places to be");
+        MessHall = new Room("The sound of good chow");
+        Dorms = new Room("For a good nights sleep here? I could never over the snoring");
+        DeckStarboard = new Room("Look at me, I am the captain now");
+        DeckPort = new Room("Cool winds? Cool breeze? Check");
+        DeckAstern = new Room("Mind your step! We're topside");
+        DeckBow= new Room("Out on the water things almost look serene");
+        Stairs= new Room("Don't run, don't trip");
+        BoilerRoom= new Room("It's gettin' hot hot hot");
+        Tube= new Room("smelling both 1 and 2 at the same time...gross");
+        Armory= new Room("you think they would let me shoot a cannon on my birthday?");
+        Shop= new Room("lost in a room where there just happens to be too much stuff");
+        Infirmary= new Room("It's a good thing Doc got me");
+        Kitchen = new Room("Smells like the mess cause it makes the mess");
+        Hallway = new Room("Every where and every way just feels the same");
+        CaptainsQuarters = new Room("Look at Cap'n all smug and jolly");
         
         // initialise room exits in the fashion of locationStart.setExit("direction", locationEnd);
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-        outside.setExit("north", courtyard);
         
-        courtyard.setExit("north",parkinglot);
-        courtyard.setExit("south",outside);    
-        courtyard.setExit("east",fields);
-        courtyard.setExit("west",stadium);
+        DeckPort.setExit("south,",DeckAstern);
+        DeckPort.setExit("north",DeckBow);
         
-        parkinglot.setExit("west", highway);
-        parkinglot.setExit("east", forest);
-        parkinglot.setExit("south", outside);
+        DeckStarboard.setExit("south,",DeckAstern);
+        DeckStarboard.setExit("north",DeckBow);    
         
-        theater.setExit("west", outside);
-        theater.setExit("east", storageroom1);
+        DeckBow.setExit("east",DeckStarboard);
+        DeckBow.setExit("west",DeckPort);
+        DeckBow.setExit("south",Infirmary);
         
-        storageroom1.setExit("west",theater);
-        storageroom1.setExit("north",bathroom2);
+        DeckAstern.setExit("north",Stairs);
+        DeckAstern.setExit("east",DeckStarboard);
+        DeckAstern.setExit("west",DeckPort);
         
-        bathroom2.setExit("south",storageroom1);
+        Infirmary.setExit("north",DeckBow);
+        
+        Stairs.setExit("north",DeckAstern);
+        Stairs.setExit("south",Hallway);
+        Stairs.setExit("east",Tube);
+        
+        Hallway.setExit("north",BoilerRoom);
+        Hallway.setExit("east",Shop);
+        Hallway.setExit("south",Kitchen);
+        Hallway.setExit("west",MessHall);
 
-        pub.setExit("east", outside);
-        pub.setExit("south", bathroom1);
+        BoilerRoom.setExit("south",Hallway);
         
-        bathroom1.setExit("north", pub);
+        Shop.setExit("south",Hallway);
+        
+        Kitchen.setExit("north",Hallway);
+        
+        MessHall.setExit("north",Hallway);
+        
+        Tube.setExit("north",CaptainsQuarters);
+        Tube.setExit("west",Dorms);
+        Tube.setExit("east",Armory);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        CaptainsQuarters.setExit("south",Tube);
+        CaptainsQuarters.setExit("north",Armory);
+        
+        Dorms.setExit("east",Tube);
+        
+        Armory.setExit("west",Tube);
+        Armory.setExit("south",CaptainsQuarters);
 
-        office.setExit("west", lab);
-        office.setExit("south",storageroom2);
-        
-        storageroom2.setExit("north",office);
-        
-        highway.setExit("east", parkinglot);
-        
-        forest.setExit("west", parkinglot);
-        
-        stadium.setExit("east", courtyard);
-        
-        fields.setExit("west", courtyard);
-
-        currentRoom = outside;  // start game outside
+        currentRoom = Infirmary;  // start game outside
     }
 
     /**

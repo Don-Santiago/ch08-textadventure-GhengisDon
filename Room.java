@@ -14,6 +14,9 @@ import java.util.Iterator;
  * 
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
+ * 
+ * @amends Don Santiago || G00301287
+ * @version 2023.03.27
  */
 
 public class Room 
